@@ -32,7 +32,7 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .course__list {
-    padding-top: 60px;
+    padding: 60px 0 10px 0;
     display: grid;
     grid-template-columns: repeat(3, minmax(auto, 368px));
     gap: 20px;
