@@ -183,6 +183,7 @@ export default defineComponent({
                 })
                 .catch((e) => {
                     console.log(e.errors);
+                    console.log(this.questionError);
 
                     e.errors.includes("name required")
                         ? (this.nameError = true)
@@ -205,6 +206,8 @@ export default defineComponent({
                     e.errors.includes("selected required")
                         ? (this.checkedError = true)
                         : (this.checkedError = false);
+                    console.log(this.questionError);
+
                     this.successForm = false;
                 });
         },
@@ -226,7 +229,7 @@ export default defineComponent({
                 : "form__item__input";
         },
         getInputClassQuestion: function (): string {
-            return this.checkedError
+            return this.questionError
                 ? "form__item__input form__item__input__error form__item__input__textarea"
                 : "form__item__input form__item__input__textarea";
         },
@@ -574,7 +577,7 @@ export default defineComponent({
     height: 48px;
     border-radius: 90px 0 50px 90px;
     background: linear-gradient(272deg, #F6BE43 0%, #FFF06A 99.76%);
-      color: $text-black;
+    color: $text-black;
     font-family: 'Montserrat-SemiBold';
     font-size: 16px;
     line-height: 140%;

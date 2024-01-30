@@ -235,6 +235,10 @@ export default defineComponent({
 
 .footer__link {
     text-decoration: none;
+
+    &:hover .footer__document__text{
+        color: #FFC100;
+    }
 }
 
 .footer__call {
@@ -259,6 +263,10 @@ export default defineComponent({
     font-family: 'Montserrat-SemiBold';
     font-size: 20px;
     line-height: 130%;
+
+    &:hover {
+        color: #FFC100;
+    }
 }
 
 .footer__call__btn {
