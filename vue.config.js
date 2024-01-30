@@ -1,10 +1,8 @@
 const { defineConfig } = require("@vue/cli-service");
 module.exports = defineConfig({
+  publicPath:  '/ymko/',
   transpileDependencies: true,
-  publicPath: process.env.NODE_ENV === 'production'
-    ? '/ymko/'
-    : '/',
-  configureWebpack: {
+    configureWebpack: {
     module: {
       rules: [
         {
