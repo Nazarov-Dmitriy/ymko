@@ -38,6 +38,9 @@ export default defineComponent({
     gap: 20px;
     justify-content: space-between;
     position: relative;
+    max-width: 1146px;
+    width: calc(100% - 160px);
+    margin: 0 auto;
 
     &::before {
         content: '';
@@ -49,6 +52,21 @@ export default defineComponent({
         height: 485px;
         background-size: contain;
         transform: rotate(15deg);
+    }
+
+    @media (max-width: 991px) {
+        width: calc(100% - 120px);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 640px) {
+        width: calc(100% - 120px);
+        grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 576px) {
+        width: calc(100% - 20px);
+        padding-top: 30px;
     }
 }
 

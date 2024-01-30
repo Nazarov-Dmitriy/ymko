@@ -21,11 +21,11 @@ export default defineComponent({
     name: 'MainPage',
     components: {
         HeaderComponent,
-        // AboutCourse,
-        // CoursesComponent,
-        // AdvertisingComponent,
-        // QuestionsComponent,
-        // FooterComponent
+        AboutCourse,
+        CoursesComponent,
+        AdvertisingComponent,
+        QuestionsComponent,
+        FooterComponent
     }
 })
 </script>
@@ -35,8 +35,5 @@ export default defineComponent({
     margin: 0 auto;
     box-sizing: border-box;
     position: relative;
-    // overflow: hidden;
-
-
 }
 </style>

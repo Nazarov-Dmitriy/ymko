@@ -1,5 +1,5 @@
 <template>
-    <div :class="!menyActive ? 'header' :'header header__active-menu '">
+    <div :class="!menyActive ? 'header' : 'header header__active-menu '">
         <div class="logo" @click="linkTo()">
             <a href="/">
                 <img src="@/assets/icons/header/logo.svg" alt="" class="logo-img">
@@ -73,6 +73,11 @@ export default defineComponent({
             background: $text-white;
         }
     }
+
+    @media (max-width: 576px) {
+        width: calc(100% - 20px);
+        padding: 0 16px 0 16px;
+    }
 }
 
 .logo {
@@ -117,8 +122,16 @@ export default defineComponent({
         border-radius: 0px 0px 16px 16px;
         padding: 5px 20px;
         box-sizing: border-box;
-        box-shadow:  0px 12px 20px 0px rgba(54, 48, 45, 0.05);
+        box-shadow: 0px 12px 20px 0px rgba(54, 48, 45, 0.05);
         backdrop-filter: blur(50px);
+    }
+
+    @media (max-width: 576px) {
+        width: calc(100% + 8px);
+        padding: 5px 16px;
+        gap:16px;
+
+
     }
 }
 
@@ -152,6 +165,10 @@ export default defineComponent({
     &:hover {
         background: $main-text;
         color: $text-white;
+    }
+
+    @media (max-width: 576px) {
+        padding: 8px 12px;
     }
 }
 

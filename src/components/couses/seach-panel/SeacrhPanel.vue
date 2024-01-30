@@ -19,7 +19,7 @@
         <div class="search-panel__item">
             <label for="search" class="search-panel__item__label">Тип курса</label>
             <select class="search-panel__item__input" v-model="selectedTypeDocument">
-                <option disabled value="">Повышение квалификации</option>
+                <option disabled value="">Выбрать из списка</option>
                 <option v-for="(typeDocument, index) in dataTypeCourse" :key="index">
                     {{ typeDocument }}
                 </option>
@@ -89,6 +89,24 @@ export default defineComponent({
     display: grid;
     grid-template-columns: repeat(3, minmax(auto, 300px)) 184px;
     gap: 20px;
+    max-width: 1146px;
+    width: calc(100% - 160px);
+    margin: 0 auto;
+
+    @media (max-width: 1440px) {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    @media (max-width: 991px) {
+        width: calc(100% - 120px);
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (max-width: 576px) {
+        grid-template-columns: repeat(1, 1fr);
+        width: calc(100% - 20px);
+    }
 }
 
 .search-panel__item {
@@ -176,6 +194,10 @@ export default defineComponent({
     &:hover {
         background: $main-text;
         color: $text-white;
+    }
+
+    @media (max-width: 576px) {
+        margin-top: 10px;
     }
 }
 </style>

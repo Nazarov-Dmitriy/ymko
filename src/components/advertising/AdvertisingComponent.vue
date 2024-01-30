@@ -22,7 +22,9 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .advertising {
-    margin: 100px 147px 60px 147px;
+    max-width: 1146px;
+    width: calc(100% - 160px);
+    margin: 100px auto 60px auto;
     box-sizing: border-box;
     height: 600px;
     border-radius: 0px 0px 16px 16px;
@@ -31,6 +33,9 @@ export default defineComponent({
     backdrop-filter: blur(10px);
     overflow: hidden;
     position: relative;
+    display: flex;
+    flex-direction: column;
+
 
     &::after {
         content: '';
@@ -43,6 +48,15 @@ export default defineComponent({
         background-size: contain;
         z-index: -1;
         transform: rotate(90deg);
+
+        @media (max-width: 991px) {
+            top: 146px;
+            left: -308px;
+        }
+
+        @media (max-width: 576px) {
+            left: -358px;
+        }
     }
 
     &::before {
@@ -56,6 +70,20 @@ export default defineComponent({
         background-size: contain;
         z-index: -1;
         transform: rotate(90deg);
+
+        @media (max-width: 576px) {
+            right: -670px;
+            top: 18px;
+        }
+    }
+
+    @media (max-width: 991px) {
+        width: calc(100% - 120px);
+    }
+
+    @media (max-width: 576px) {
+        width: calc(100% - 20px);
+        justify-content: space-between;
     }
 }
 
@@ -67,6 +95,26 @@ export default defineComponent({
     line-height: 100%;
     padding: 204px 0 0 100px;
     width: 613px;
+
+    @media (max-width: 1440px) {
+        width: 53%;
+        padding: 180px 0 0 100px;
+    }
+
+    @media (max-width: 991px) {
+        width: 410px;
+        padding: 80px 0 0 40px;
+
+    }
+
+    @media (max-width: 767px) {
+        font-size: 56px;
+    }
+
+    @media (max-width: 576px) {
+        padding: 20px 0 0 20px;
+        width: 80%;
+    }
 }
 
 .advertising__btn {
@@ -75,6 +123,19 @@ export default defineComponent({
     margin: 80px 0 0 100px;
     align-items: center;
     width: 260px;
+    position: relative;
+
+    @media (max-width: 991px) {
+        margin: 80px 0 0 40px;
+    }
+
+    @media (max-width: 767px) {
+        margin: 280px 0 0 40px;
+    }
+
+    @media (max-width: 576px) {
+        margin: 20px;
+    }
 }
 
 .advertising__btn__text {
@@ -127,10 +188,23 @@ export default defineComponent({
 
 .advertising__img {
     position: absolute;
-    top: 0px;
+    top: 0;
     right: -224px;
     transform: rotate(-30deg);
     width: 678px;
     height: 658px;
+
+    @media (max-width: 991px) {
+        right: -154px;
+        top: 80px;
+        width: 500px;
+        height: 485.562px;
+    }
+
+    @media (max-width: 576px) {
+        top: 90px;
+        right: -194px;
+
+    }
 }
 </style>

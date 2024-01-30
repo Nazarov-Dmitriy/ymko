@@ -1,6 +1,6 @@
 <template >
     <div :class="getCourseItem" :style="data.payment === 0 ? 'background: #FAFAEE' : ''">
-        <h3 class="course-item__title">{{ data.name }}</h3>
+        <h3 :class="getItemTitleLine">{{ data.name }}</h3>
         <div :class="getItemDescription">
             <div class="course-item__description__item">
                 <img src="@/assets/icons/couses/calendar.svg" alt="icon calendar"
@@ -75,7 +75,10 @@ export default defineComponent({
         },
         getItemFooterPrice(): string {
             return this.viewCards === "line" ? "course-item__footer__price course-item__footer__price__line" : "course-item__footer__price";
-        }
+        },
+        getItemTitleLine(): string {
+            return this.viewCards === "line" ? "course-item__title course-item__title__line" : "course-item__title";
+        },
     },
 })
 </script>
@@ -87,15 +90,45 @@ export default defineComponent({
     box-shadow: -4px -4px 20px 0px rgba(54, 48, 45, 0.05), 4px 4px 20px 0px rgba(54, 48, 45, 0.05);
     backdrop-filter: blur(10px);
     display: grid;
-    grid-template-rows: minmax(104px, auto) minmax(60px, auto) minmax(134px, auto);
+    grid-template-rows: minmax(104px, auto) 60px minmax(134px, auto);
     gap: 20px;
     background: $text-white;
 
 
 
+    @media (max-width: 1440px) {
+        grid-template-rows: minmax(104px, auto) 60px 156px;
+    }
+
+    @media (max-width: 991px) {
+        grid-template-rows: minmax(70px, auto) 60px 156px;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-rows: minmax(70px, auto) 98px 156px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-rows: minmax(70px, auto) 60px 156px;
+    }
+
     &__line {
         grid-template-columns: 2fr 1fr 188px;
         grid-template-rows: 1fr;
+
+        @media (max-width: 1440px) {
+            grid-template-columns: 2fr 1fr 188px;
+            grid-template-rows: 1fr;
+        }
+
+        @media (max-width: 991px) {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: minmax(26px, auto) 1fr;
+        }
+
+        @media (max-width: 420px) {
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -104,17 +137,57 @@ export default defineComponent({
     font-family: 'Montserrat-SemiBold';
     font-size: 20px;
     line-height: 130%;
+
+    @media (max-width: 768px) {
+        font-size: 16px;
+    }
+
+    @media (max-width: 640px) {
+        font-size: 20px;
+    }
+
+    &__line {
+        max-width: 400px;
+
+        @media (max-width: 991px) {
+            grid-column-start: 1;
+            grid-column-end: 3;
+            max-width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            font-size: 20px;
+        }
+
+        @media (max-width: 420px) {
+            grid-column-start: 1;
+            grid-column-end: 2;
+        }
+    }
 }
 
 .course-item__description {
+    align-self: end;
+
     display: grid;
     gap: 16px;
     grid-template-columns: 1fr 1fr;
-    grid-template-rows: 22px 22px;
+    grid-template-rows: 22px 22px auto;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 1fr 1fr;
+    }
 
     &__line {
-        grid-template-rows: 22px 22px 1fr;
+        align-self: start;
 
+        @media (max-width: 640px) {
+            grid-template-columns: 1fr;
+        }
     }
 }
 
@@ -125,8 +198,6 @@ export default defineComponent({
 }
 
 .course-item__description__item__img {
-    grid-area: b;
-
     width: 20px;
     height: 20px;
 }
@@ -139,19 +210,51 @@ export default defineComponent({
 }
 
 .course-item__footer {
+    align-self: end;
     display: grid;
     justify-content: space-between;
     grid-template-columns: 188px 1fr;
     grid-template-rows: 134px auto;
 
+    @media (max-width: 1440px) {
+        grid-template-columns: 1fr;
+    }
+
+    @media (max-width: 991px) {
+        gap: 10px;
+    }
+
+    @media (max-width: 640px) {
+        grid-template-columns: 188px 1fr;
+        gap: 0px;
+    }
+
+    @media (max-width: 380px) {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
     &__line {
         grid-template-columns: 188px;
+
+        @media (max-width: 991px) {
+            justify-self: end;
+        }
+
+        @media (max-width: 420px) {
+            justify-self: center;
+        }
     }
 }
 
 .course-item__footer__img {
     width: 100%;
     height: 100%;
+
+    @media (max-width: 1440px) {
+        width: 188px;
+        height: 134px;
+    }
 }
 
 .course-item__footer__price {
@@ -165,6 +268,10 @@ export default defineComponent({
         justify-content: flex-start;
         padding-left: 0;
         grid-row-start: 3;
+
+        @media (max-width: 768px) {
+            grid-row-start: 4;
+        }
     }
 }
 

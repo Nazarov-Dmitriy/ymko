@@ -1,26 +1,24 @@
 <template >
     <div class="fillter-panel">
-        <div class="fillter-panel__list">
-            <div class="fillter-panel__list__item" @click="setFilter(filterName, filterSort, filterField)">
-                <p class="fillter-panel__list__item__text fillter-panel__list__item__text-active">{{ filterName }}</p>
-                <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
-                    :class="filterSort == 'Desending' ? 'fillter-panel__list__item__img' : ''">
-            </div>
-            <div class="fillter-panel__list__item" @click="setFilter('по рейтингу', filterSortReting, 'rating')">
-                <p class="fillter-panel__list__item__text">по рейтингу</p>
-                <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
-                    :class="filterSortReting == 'Desending' ? 'fillter-panel__list__item__img' : ''">
-            </div>
-            <div class="fillter-panel__list__item" @click="setFilter('по цене', filterSortCost, 'payment')">
-                <p class="fillter-panel__list__item__text">по цене</p>
-                <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
-                    :class="filterSortCost == 'Desending' ? 'fillter-panel__list__item__img' : ''">
-            </div>
-            <div class="fillter-panel__list__item" @click="setFilter('по длительности', filterSortByDuration, 'duration')">
-                <p class="fillter-panel__list__item__text">по длительности</p>
-                <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
-                    :class="filterSortByDuration == 'Desending' ? 'fillter-panel__list__item__img' : ''">
-            </div>
+        <div class="fillter-panel__item" @click="setFilter(filterName, filterSort, filterField)">
+            <p class="fillter-panel__item__text fillter-panel__item__text-active">{{ filterName }}</p>
+            <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
+                :class="filterSort == 'Desending' ? 'fillter-panel__item__img' : ''">
+        </div>
+        <div class="fillter-panel__item" @click="setFilter('по рейтингу', filterSortReting, 'rating')">
+            <p class="fillter-panel__item__text">по рейтингу</p>
+            <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
+                :class="filterSortReting == 'Desending' ? 'fillter-panel__item__img' : ''">
+        </div>
+        <div class="fillter-panel__item" @click="setFilter('по цене', filterSortCost, 'payment')">
+            <p class="fillter-panel__item__text">по цене</p>
+            <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
+                :class="filterSortCost == 'Desending' ? 'fillter-panel__item__img' : ''">
+        </div>
+        <div class="fillter-panel__item" @click="setFilter('по длительности', filterSortByDuration, 'duration')">
+            <p class="fillter-panel__item__text">по длительности</p>
+            <img src="@/assets/icons/couses/reaiting.svg" alt="icon reating"
+                :class="filterSortByDuration == 'Desending' ? 'fillter-panel__item__img' : ''">
         </div>
         <div class="fillter-panel__btns">
             <div :class="isActiveLine ? 'fillter-panel__btn fillter-panel__btn-active' : 'fillter-panel__btn'"
@@ -134,26 +132,44 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .fillter-panel {
+    margin: 0 auto;
     box-sizing: border-box;
     border-radius: 25px;
-    border-right: 10px solid $text-white-20;
-    border-bottom: 10px solid $text-white-20;
-    border-left: 10px solid $text-white-20;
     background: #F3F3F3;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 24px;
-    padding: 23px 68px 12px 60px;
-}
-
-.fillter-panel__list {
-    display: flex;
+    display: grid;
+    grid-template-columns: 180px repeat(3, minmax(139px, auto)) 214px;
     align-items: center;
     gap: 32px;
+    max-width: 1146px;
+    width: calc(100% - 160px);
+    margin-top: 24px;
+    padding: 23px 68px 22px 60px;
+
+    @media (max-width: 1440px) {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        gap: 12px 32px;
+
+
+    }
+
+    @media (max-width: 991px) {
+        width: calc(100% - 120px);
+        padding: 23px 20px;
+    }
+
+    @media (max-width: 768px) {
+        grid-template-columns: repeat(6, 1fr);
+        grid-template-rows: repeat(3, 1fr);
+        gap: 12px 12px;
+    }  
+
+    @media (max-width: 576px) {
+        width: calc(100% - 20px);
+    }
 }
 
-.fillter-panel__list__item {
+.fillter-panel__item {
     display: flex;
     align-items: center;
     gap: 20px;
@@ -162,10 +178,6 @@ export default defineComponent({
     cursor: pointer;
     position: relative;
 
-    &:first-child .fillter-panel__list__item__text {
-        width: 149px;
-    }
-
     &:nth-child(-n+3)::before {
         content: "";
         position: absolute;
@@ -173,10 +185,94 @@ export default defineComponent({
         width: 1px;
         height: 100%;
         background: #D7D7D7;
+
+        @media (max-width: 1440px) {
+            display: none;
+        }
+    }
+
+    @media (max-width: 1440px) {
+        &:first-child {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-column-end: 3;
+            margin-right: 0;
+        }
+
+        &:nth-child(3) {
+            justify-self: center;
+            justify-content: center;
+            width: 100%;
+            margin-right: 0;
+        }
+
+        &:nth-child(3)::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: -16px;
+            width: 1px;
+            height: 100%;
+            background: #D7D7D7;
+        }
+
+        &:nth-child(3)::before {
+            display: block;
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -16px;
+            width: 1px;
+            height: 100%;
+            background: #D7D7D7;
+        }
+
+        &:nth-child(4) {
+            justify-self: end;
+            margin: 0;
+        }
+    }
+
+    @media (max-width: 768px) {
+        gap: 12px;
+
+        &:first-child {
+            grid-row-start: 1;
+            grid-column-start: 1;
+            grid-column-end: 6;
+        }
+
+        &:nth-child(2) {
+            grid-row-start: 2;
+            grid-column-start: 1;
+            grid-column-end: 4;
+        }
+
+
+        &:nth-child(3) {
+            grid-row-start: 2;
+            grid-column-start: 4;
+            grid-column-end: 7;
+            justify-content: end;
+
+        }
+
+        &:nth-child(3)::after,
+        &:nth-child(3)::before {
+            display: none;
+        }
+
+        &:nth-child(4) {
+            grid-row-start: 3;
+            grid-column-start: 1;
+            grid-column-end: 4;
+            justify-self: start;
+        }
     }
 }
 
-.fillter-panel__list__item__text {
+.fillter-panel__item__text {
+    flex-shrink: 0;
     color: $main-text;
     font-family: Montserrat-Regular;
     font-size: 16px;
@@ -189,13 +285,25 @@ export default defineComponent({
 
 
 
-.fillter-panel__list__item__img {
+.fillter-panel__item__img {
     rotate: 180deg;
 }
 
 .fillter-panel__btns {
     display: flex;
     gap: 16px;
+    justify-content: flex-end;
+
+    @media (max-width: 1440px) {
+        grid-column-start: 3;
+        grid-row-start: 1;
+    }
+
+    @media (max-width: 768px) {
+        grid-column-start: 6;
+        grid-column-end: 7;
+        grid-row-start: 1;
+    }
 }
 
 .fillter-panel__btn {
@@ -212,3 +320,4 @@ export default defineComponent({
     }
 }
 </style>
+

@@ -1,13 +1,13 @@
 <template>
-    <div class="courses" id="courses">
+    <section class="courses" id="courses">
         <SeacrhPanel :dataArray=dataArray @getSearchParam="setSearchParam" />
         <FilterPanel @getFilter="setFilter" @getViewCards="setViewCards" :propClear="clearFilter" />
-        <CoursesList :dataArray=dataArrayFilter :viewCards="viewCards" />
-        <div class="courses__btn" @click="linkTo()">
+         <CoursesList :dataArray=dataArrayFilter :viewCards="viewCards" />
+       <!-- <div class="courses__btn" @click="linkTo()">
             <buttun class="courses__btn__text">Все курсы</buttun>
             <buttun class="courses__btn__arrow"></buttun>
-        </div>
-    </div>
+        </div> -->
+    </section>
 </template>
 
 <script lang="ts">
@@ -27,7 +27,11 @@ interface ICoursesComponent {
 
 export default defineComponent({
     name: 'CoursesComponent',
-    components: { SeacrhPanel, FilterPanel, CoursesList },
+    components: {
+        SeacrhPanel,
+        FilterPanel,
+        CoursesList
+    },
     data(): ICoursesComponent {
         return {
             dataArray: dataCourse,
@@ -95,8 +99,8 @@ export default defineComponent({
 
 <style scoped lang="scss">
 .courses {
-    padding: 0 146px;
-    overflow: hidden;
+    max-width: 1440px;
+    overflow: hidden;  
 }
 
 .courses__btn {
