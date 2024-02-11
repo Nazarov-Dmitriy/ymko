@@ -1,5 +1,5 @@
 <template >
-    <div>
+    <div class="container">
         <div class="wraper">
             <div class="footer">
                 <div class="footer__column">
@@ -74,12 +74,16 @@ export default defineComponent({
 })
 </script>
 <style scoped lang="scss">
+.container {
+    width: 100%;
+    background: #787878;
+    overflow: hidden;
+}
+
 .wraper {
     max-width: 1440px;
-    overflow: hidden;
     position: relative;
-    background: #787878;
-
+    margin: 0 auto;
 
     &::after {
         content: "";
@@ -236,7 +240,7 @@ export default defineComponent({
 .footer__link {
     text-decoration: none;
 
-    &:hover .footer__document__text{
+    &:hover .footer__document__text {
         color: #FFC100;
     }
 }

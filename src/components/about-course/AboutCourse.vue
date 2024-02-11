@@ -57,7 +57,7 @@ export default defineComponent({
     background: linear-gradient(125deg, rgba(255, 255, 255, 0.50) -11.86%, rgba(255, 255, 255, 0.40) 100%);
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
     position: relative;
-
+    margin: 0 auto;
 
     &::after {
         content: "";

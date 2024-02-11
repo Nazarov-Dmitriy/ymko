@@ -240,7 +240,7 @@ export default defineComponent({
 .questions-wrapper {
     border-radius: 16px 16px 0px 0px;
     box-sizing: border-box;
-    margin-top: 60px;
+    margin: 60px auto 0 auto;
     max-width: 1440px;
     background: $text-white;
     box-shadow: -4px -4px 20px 0px rgba(54, 48, 45, 0.05), 4px 4px 20px 0px rgba(54, 48, 45, 0.05);

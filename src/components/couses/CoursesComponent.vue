@@ -3,10 +3,6 @@
         <SeacrhPanel :dataArray=dataArray @getSearchParam="setSearchParam" />
         <FilterPanel @getFilter="setFilter" @getViewCards="setViewCards" :propClear="clearFilter" />
          <CoursesList :dataArray=dataArrayFilter :viewCards="viewCards" />
-       <!-- <div class="courses__btn" @click="linkTo()">
-            <buttun class="courses__btn__text">Все курсы</buttun>
-            <buttun class="courses__btn__arrow"></buttun>
-        </div> -->
     </section>
 </template>
 
@@ -101,6 +97,7 @@ export default defineComponent({
 .courses {
     max-width: 1440px;
     overflow: hidden;  
+    margin: 0 auto;
 }
 
 .courses__btn {

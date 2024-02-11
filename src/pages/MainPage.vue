@@ -31,7 +31,7 @@ export default defineComponent({
 </script>
 <style scoped lang="scss">
 .main-page {
-    max-width: 1440px;
+    // max-width: 1440px;
     margin: 0 auto;
     box-sizing: border-box;
     position: relative;
